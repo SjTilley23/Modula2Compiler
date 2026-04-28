@@ -227,7 +227,7 @@ procedureHeading :
 	PROCEDURE ident formalParameters?
 	;
 
-0block :
+block :
 	declaration*
 	( BEGIN statementSequence )? END
 	;
@@ -244,7 +244,7 @@ formalParameters :
 	'(' ( fpSection ( ';' fpSection )* )? ')' ( ':' ident )?
 	;
 
-fpSection :0
+fpSection :
 	VAR? identList ':' formalType
 	;
 

@@ -671,6 +671,10 @@ int aP() {
             }
             return FAILED;
         }
+        if (token == ')') {
+            match(')');
+            return SUCCESS;
+        }
         return FAILED;
     }
     return FAILED;
@@ -706,7 +710,7 @@ int S() {
         if (E()) {
             return SUCCESS;
         }
-        return FAILED;
+        return SUCCESS;
     }
     return SUCCESS;
 }
@@ -783,11 +787,11 @@ int apC() {
 
 int sS() {
     if (S()) {
-        while (token == ',') {
-            if (!(token == ',')) {
+        while (token == ';') {
+            if (!(token == ';')) {
                 return FAILED;
             }
-            match(',');
+            match(';');
             if (!S()) {
                 return FAILED;
             }
@@ -1074,6 +1078,7 @@ int fP() {
                 }
                 return SUCCESS;
             }
+            return FAILED;
         }
         if (token == ')') {
             match(')');
@@ -1232,10 +1237,9 @@ int dF() {
             match(TOKEN_IDENT);
             if (token == '=') {
                 match('=');
-                if (token == TOKEN_TYPE) {
-                    match(TOKEN_TYPE);
+                if (!T()) {
+                    return FAILED;
                 }
-                return FAILED;
             }
             if (!(token == ';')) {
                 return FAILED;
@@ -1328,8 +1332,6 @@ int cU() {
     }
     return FAILED;
 }
-
-
 
 
 int main() {
