@@ -1,10 +1,13 @@
 %{
     #include <stdio.h>
-    #include "tokens.h"
+    #include "ast.h"
+    #include "bison.tab.h"
 %}
 
 %%
-"AND"            { return TOKEN_AND; }
+"AND"            { yylval.node = makeLeaf("AND"); return TOKEN_AND; }
+"OR"             { yylval.node = makeLeaf("OR");  return TOKEN_OR; }
+"NOT"            { yylval.node = makeLeaf("NOT"); return TOKEN_NOT; }
 "ARRAY"          { return TOKEN_ARRAY; }
 "BEGIN"          { return TOKEN_BEGIN; }
 "BY"             { return TOKEN_BY; }
@@ -21,9 +24,7 @@
 "IMPLEMENTATION" { return TOKEN_IMPLEMENTATION; }
 "MOD"            { return TOKEN_MOD; }
 "MODULE"         { return TOKEN_MODULE; }
-"NOT"            { return TOKEN_NOT; }
 "OF"             { return TOKEN_OF; }
-"OR"             { return TOKEN_OR; }
 "PROCEDURE"      { return TOKEN_PROCEDURE; }
 "READ"           { return TOKEN_READ; }
 "REPEAT"         { return TOKEN_REPEAT; }
@@ -70,13 +71,23 @@
 ".."             { return TOKEN_DOUBLEDOT; }
 ":="             { return TOKEN_ASSIGN; }
 
-\"([^\\\"\n]|\\.)*\"    { return TOKEN_STRING; }
-\'([^\\\'\n]|\\.)*\'    { return TOKEN_STRING; }
+\"([^\\\"\n]|\\.)*\" {
+    yylval.node = makeLeaf(yytext);
+    return TOKEN_STRING;
+}
+
+\'([^\\\'\n]|\\.)*\' {
+    yylval.node = makeLeaf(yytext);
+    return TOKEN_STRING;
+}
 
 [[:alpha:]][[:alnum:]]* {
-    return TOKEN_IDENT;}
+    yylval.node = makeLeaf(yytext);
+    return TOKEN_IDENT;
+}
 
 [0-9]+ {
+    yylval.node = makeLeaf(yytext);
     return TOKEN_INTEGER;
 }
 %%

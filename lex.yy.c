@@ -368,18 +368,18 @@ static const flex_int16_t yy_accept[171] =
        68,   68,   68,   68,   68,   68,   68,   68,   68,   68,
        68,   68,   54,   55,   56,   57,   58,   59,   60,   61,
        62,   63,    0,   66,    0,    0,   67,    0,   64,   69,
-       65,   34,   33,   35,   68,   68,   68,   68,    4,   68,
-       68,   68,    8,   68,   68,   68,   68,   14,   68,   68,
-       68,   19,   20,   68,   68,   68,   26,   68,   68,   68,
-       68,   68,    1,   68,   68,   68,   68,    7,   68,   11,
+       65,   34,   33,   35,   68,   68,   68,   68,    6,   68,
+       68,   68,   10,   68,   68,   68,   68,   16,   68,   68,
+       68,   20,    2,   68,   68,   68,   26,   68,   68,   68,
+       68,   68,    1,   68,   68,   68,   68,    9,   68,   13,
 
-       68,   13,   68,   16,   18,   68,   68,   68,   68,   68,
-       68,   68,   29,   68,   68,   68,   68,   68,   68,    9,
-       68,   12,   68,   68,   68,   22,   68,   68,   25,   27,
-       68,   68,   68,    2,    3,    5,   68,   10,   68,   68,
-       68,   68,   68,   28,   30,   31,   68,   68,   17,   68,
+       68,   15,   68,   18,    3,   68,   68,   68,   68,   68,
+       68,   68,   29,   68,   68,   68,   68,   68,   68,   11,
+       68,   14,   68,   68,   68,   22,   68,   68,   25,   27,
+       68,   68,   68,    4,    5,    7,   68,   12,   68,   68,
+       68,   68,   68,   28,   30,   31,   68,   68,   19,   68,
        23,   24,   68,   68,   68,   68,   32,   68,   68,   68,
-       68,   68,   21,    6,   68,   68,   68,   68,   15,    0
+       68,   68,   21,    8,   68,   68,   68,   68,   17,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -547,9 +547,10 @@ char *yytext;
 #line 1 "Modula2.lex"
 #line 2 "Modula2.lex"
     #include <stdio.h>
-    #include "tokens.h"
-#line 552 "lex.yy.c"
+    #include "ast.h"
+    #include "bison.tab.h"
 #line 553 "lex.yy.c"
+#line 554 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -766,9 +767,9 @@ YY_DECL
 		}
 
 	{
-#line 6 "Modula2.lex"
+#line 7 "Modula2.lex"
 
-#line 772 "lex.yy.c"
+#line 773 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -827,358 +828,367 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 7 "Modula2.lex"
-{ return TOKEN_AND; }
+#line 8 "Modula2.lex"
+{ yylval.node = makeLeaf("AND"); return TOKEN_AND; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 8 "Modula2.lex"
-{ return TOKEN_ARRAY; }
+#line 9 "Modula2.lex"
+{ yylval.node = makeLeaf("OR");  return TOKEN_OR; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 9 "Modula2.lex"
-{ return TOKEN_BEGIN; }
+#line 10 "Modula2.lex"
+{ yylval.node = makeLeaf("NOT"); return TOKEN_NOT; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 10 "Modula2.lex"
-{ return TOKEN_BY; }
+#line 11 "Modula2.lex"
+{ return TOKEN_ARRAY; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 11 "Modula2.lex"
-{ return TOKEN_CONST; }
+#line 12 "Modula2.lex"
+{ return TOKEN_BEGIN; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 12 "Modula2.lex"
-{ return TOKEN_DEFINITION; }
+#line 13 "Modula2.lex"
+{ return TOKEN_BY; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 13 "Modula2.lex"
-{ return TOKEN_DIV; }
+#line 14 "Modula2.lex"
+{ return TOKEN_CONST; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 14 "Modula2.lex"
-{ return TOKEN_DO; }
+#line 15 "Modula2.lex"
+{ return TOKEN_DEFINITION; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 15 "Modula2.lex"
-{ return TOKEN_ELSE; }
+#line 16 "Modula2.lex"
+{ return TOKEN_DIV; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 16 "Modula2.lex"
-{ return TOKEN_ELSIF; }
+#line 17 "Modula2.lex"
+{ return TOKEN_DO; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 17 "Modula2.lex"
-{ return TOKEN_END; }
+#line 18 "Modula2.lex"
+{ return TOKEN_ELSE; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 18 "Modula2.lex"
-{ return TOKEN_EXIT; }
+#line 19 "Modula2.lex"
+{ return TOKEN_ELSIF; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 19 "Modula2.lex"
-{ return TOKEN_FOR; }
+#line 20 "Modula2.lex"
+{ return TOKEN_END; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 20 "Modula2.lex"
-{ return TOKEN_IF; }
+#line 21 "Modula2.lex"
+{ return TOKEN_EXIT; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 21 "Modula2.lex"
-{ return TOKEN_IMPLEMENTATION; }
+#line 22 "Modula2.lex"
+{ return TOKEN_FOR; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 22 "Modula2.lex"
-{ return TOKEN_MOD; }
+#line 23 "Modula2.lex"
+{ return TOKEN_IF; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 23 "Modula2.lex"
-{ return TOKEN_MODULE; }
+#line 24 "Modula2.lex"
+{ return TOKEN_IMPLEMENTATION; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 24 "Modula2.lex"
-{ return TOKEN_NOT; }
+#line 25 "Modula2.lex"
+{ return TOKEN_MOD; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 25 "Modula2.lex"
-{ return TOKEN_OF; }
+#line 26 "Modula2.lex"
+{ return TOKEN_MODULE; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 26 "Modula2.lex"
-{ return TOKEN_OR; }
+#line 27 "Modula2.lex"
+{ return TOKEN_OF; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 27 "Modula2.lex"
+#line 28 "Modula2.lex"
 { return TOKEN_PROCEDURE; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 28 "Modula2.lex"
+#line 29 "Modula2.lex"
 { return TOKEN_READ; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 29 "Modula2.lex"
+#line 30 "Modula2.lex"
 { return TOKEN_REPEAT; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 30 "Modula2.lex"
+#line 31 "Modula2.lex"
 { return TOKEN_RETURN; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 31 "Modula2.lex"
+#line 32 "Modula2.lex"
 { return TOKEN_THEN; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 32 "Modula2.lex"
+#line 33 "Modula2.lex"
 { return TOKEN_TO; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 33 "Modula2.lex"
+#line 34 "Modula2.lex"
 { return TOKEN_TYPE; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 34 "Modula2.lex"
+#line 35 "Modula2.lex"
 { return TOKEN_UNTIL; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 35 "Modula2.lex"
+#line 36 "Modula2.lex"
 { return TOKEN_VAR; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 36 "Modula2.lex"
+#line 37 "Modula2.lex"
 { return TOKEN_WHILE; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 37 "Modula2.lex"
+#line 38 "Modula2.lex"
 { return TOKEN_WRITE; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 38 "Modula2.lex"
+#line 39 "Modula2.lex"
 { return TOKEN_IDENT; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 39 "Modula2.lex"
+#line 40 "Modula2.lex"
 { return TOKEN_LREQ; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 40 "Modula2.lex"
+#line 41 "Modula2.lex"
 { return TOKEN_LEQ; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 41 "Modula2.lex"
+#line 42 "Modula2.lex"
 { return TOKEN_REQ; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 42 "Modula2.lex"
+#line 43 "Modula2.lex"
 { return '='; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 43 "Modula2.lex"
+#line 44 "Modula2.lex"
 { return '!'; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 44 "Modula2.lex"
+#line 45 "Modula2.lex"
 { return '$'; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 45 "Modula2.lex"
+#line 46 "Modula2.lex"
 { return '%'; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 46 "Modula2.lex"
+#line 47 "Modula2.lex"
 { return '&'; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 47 "Modula2.lex"
+#line 48 "Modula2.lex"
 { return '('; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 48 "Modula2.lex"
+#line 49 "Modula2.lex"
 { return ')'; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 49 "Modula2.lex"
+#line 50 "Modula2.lex"
 { return '*'; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 50 "Modula2.lex"
+#line 51 "Modula2.lex"
 { return '+'; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 51 "Modula2.lex"
+#line 52 "Modula2.lex"
 { return ','; }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 52 "Modula2.lex"
+#line 53 "Modula2.lex"
 { return '-'; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 53 "Modula2.lex"
+#line 54 "Modula2.lex"
 { return '.'; }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 54 "Modula2.lex"
+#line 55 "Modula2.lex"
 { return ':'; }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 55 "Modula2.lex"
+#line 56 "Modula2.lex"
 { return ';'; }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 56 "Modula2.lex"
+#line 57 "Modula2.lex"
 { return '<'; }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 57 "Modula2.lex"
+#line 58 "Modula2.lex"
 { return '>'; }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 58 "Modula2.lex"
+#line 59 "Modula2.lex"
 { return '?'; }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 59 "Modula2.lex"
+#line 60 "Modula2.lex"
 { return '@'; }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 60 "Modula2.lex"
+#line 61 "Modula2.lex"
 { return '['; }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 61 "Modula2.lex"
+#line 62 "Modula2.lex"
 { return TOKEN_DOUBLEBACK; }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 62 "Modula2.lex"
+#line 63 "Modula2.lex"
 { return ']'; }
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 63 "Modula2.lex"
+#line 64 "Modula2.lex"
 { return '^'; }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 64 "Modula2.lex"
+#line 65 "Modula2.lex"
 { return '_'; }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 65 "Modula2.lex"
+#line 66 "Modula2.lex"
 { return '`'; }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 66 "Modula2.lex"
+#line 67 "Modula2.lex"
 { return '{'; }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 67 "Modula2.lex"
+#line 68 "Modula2.lex"
 { return '|'; }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 68 "Modula2.lex"
+#line 69 "Modula2.lex"
 { return '}'; }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 69 "Modula2.lex"
+#line 70 "Modula2.lex"
 { return '~'; }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 70 "Modula2.lex"
+#line 71 "Modula2.lex"
 { return TOKEN_DOUBLEDOT; }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 71 "Modula2.lex"
+#line 72 "Modula2.lex"
 { return TOKEN_ASSIGN; }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 73 "Modula2.lex"
-{ return TOKEN_STRING; }
+#line 74 "Modula2.lex"
+{
+    yylval.node = makeLeaf(yytext);
+    return TOKEN_STRING;
+}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 74 "Modula2.lex"
-{ return TOKEN_STRING; }
+#line 79 "Modula2.lex"
+{
+    yylval.node = makeLeaf(yytext);
+    return TOKEN_STRING;
+}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 76 "Modula2.lex"
+#line 84 "Modula2.lex"
 {
-    return TOKEN_IDENT;}
+    yylval.node = makeLeaf(yytext);
+    return TOKEN_IDENT;
+}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 79 "Modula2.lex"
+#line 89 "Modula2.lex"
 {
+    yylval.node = makeLeaf(yytext);
     return TOKEN_INTEGER;
 }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 82 "Modula2.lex"
+#line 93 "Modula2.lex"
 ECHO;
 	YY_BREAK
-#line 1182 "lex.yy.c"
+#line 1192 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2183,7 +2193,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 82 "Modula2.lex"
+#line 93 "Modula2.lex"
 
 
 int yywrap() {
